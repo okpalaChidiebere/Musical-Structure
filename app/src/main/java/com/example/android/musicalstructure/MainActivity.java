@@ -2,7 +2,10 @@ package com.example.android.musicalstructure;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -37,5 +40,16 @@ public class MainActivity extends AppCompatActivity {
         // Attach the adapter to a ListView
         ListView listView = (ListView) findViewById(R.id.home_song_list);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //String product_name = adapter.get(position);
+                Intent intent = new Intent(MainActivity.this,song_playing.class);
+                //intent.putExtra("product_name",product_name);
+                startActivity(intent);
+            }
+        });
     }
 }
